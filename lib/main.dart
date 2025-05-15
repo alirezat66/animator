@@ -1,11 +1,11 @@
+import 'package:animator/features/page_player/view/pages/animated_page_player_screen.dart';
+import 'package:animator/features/page_player/view/pages/screen_select_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/di/service_locator.dart'; // Import GetIt setup
 import 'features/page_player/view_model/bloc/page_player_bloc.dart'; // Import PagePlayerBloc
-import 'features/page_player/view/pages/page_player_screen.dart'; // Import PagePlayerScreen
 import 'features/page_player/model/repository/page_repository.dart'; // Import PageRepository (needed for BLoC creation before GetIt is fully set up)
 import 'features/page_player/model/repository/page_local_datasource.dart'; // Import PageLocalDataSource (needed for Repository creation before GetIt is fully set up)
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required for asset loading
@@ -16,34 +16,33 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider( // Use MultiBlocProvider if more BLoCs are added later
+    return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => PagePlayerBloc(
-             // Manually create dependencies here before GetIt is fully configured for the BLoC
-             // In a real app, you'd get this from GetIt: GetIt.I<PageRepository>()
-             // For now, manually create the repository and datasource
-             pageRepository: PageRepository(
-               localDataSource: PageLocalDataSourceImpl(),
-             ),
-          ),
+          create:
+              (context) => PagePlayerBloc(
+                pageRepository: PageRepository(
+                  localDataSource: PageLocalDataSourceImpl(),
+                ),
+              ),
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Page Animator',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true, // Use Material 3 features
+          useMaterial3: true,
         ),
-        home: const PagePlayerScreen(), // Set PagePlayerScreen as the home page
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const ScreenSelectionPage(),
+          '/screen1': (context) => const AnimatedPagePlayerScreen(),
+        },
       ),
     );
   }
 }
 
 // Remove the old MyHomePage widget as it's no longer needed
-
-

@@ -22,31 +22,35 @@ class ImageWidget extends StatelessWidget {
       try {
         imageContent = ImageContentModel.fromJson(content);
       } catch (e) {
-        print('Error parsing ImageContentModel for item ${itemData.itemId}: $e');
+        print(
+          'Error parsing ImageContentModel for item ${itemData.itemId}: $e',
+        );
         // Return an error placeholder if content is malformed
-        return ErrorPlaceholderWidget(itemData: itemData, error: 'Malformed image content');
+        return ErrorPlaceholderWidget(
+          itemData: itemData,
+          error: 'Malformed image content',
+        );
       }
     } else {
-       // Return an error placeholder if content is not a Map
-       return ErrorPlaceholderWidget(itemData: itemData, error: 'Invalid image content type');
+      // Return an error placeholder if content is not a Map
+      return ErrorPlaceholderWidget(
+        itemData: itemData,
+        error: 'Invalid image content type',
+      );
     }
-
 
     // Basic image rendering
     Widget imageWidget = Image.network(
-      imageContent?.src ?? '', // Use a placeholder image or handle null src
+      imageContent.src, // Use a placeholder image or handle null src
       width: layout.size.width,
       height: layout.size.height,
       fit: BoxFit.contain, // Or BoxFit.fill, BoxFit.cover based on requirements
       // Add other Image properties as needed
     );
 
-     // Apply opacity
+    // Apply opacity
     if (style.opacity < 1.0) {
-      imageWidget = Opacity(
-        opacity: style.opacity,
-        child: imageWidget,
-      );
+      imageWidget = Opacity(opacity: style.opacity, child: imageWidget);
     }
 
     // Apply style properties like border, shadow, blur if needed, similar to ShapeWidget.
