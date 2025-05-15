@@ -1,0 +1,246 @@
+{
+  "screenId": "screen1",
+  "timeDuration": 7000,
+  "background": {
+    "color": "FFFFFF",
+    "image": null
+  },
+  "constraints": {
+    "format": "iphone8",
+    "size": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "items": [
+    {
+      "itemId": "text1",
+      "type": "text",
+      "layout": {
+        "position": {
+          "axisYAlignmentType": "bottom",
+          "axisXAlignmentType": "right",
+          "xPosition": 146,
+          "yPosition": 48
+        },
+        "angle": 0,
+        "size": {
+          "width": 74,
+          "height": 44
+        }
+      },
+      "content": "Guten Tag",
+      "textStyle": {
+        "fontFamily": "",
+        "weight": "w500",
+        "size": 36,
+        "alignment": "ltr",
+        "verticalAlignment": "top",
+        "autoResize": "width",
+        "lineHeight": 1,
+        "letterSpacing": 1,
+        "case": "camel"
+      },
+      "style": {
+        "opacity": 1,
+        "fill": {
+          "isFill": true,
+          "color": "000000"
+        },
+        "stroke": {
+          "hasStroke": true,
+          "weight": 2,
+          "color": "000000"
+        },
+        "shadow": {
+          "hasShadow": true,
+          "offset": {
+            "x": 4,
+            "y": 4
+          },
+          "blur": 4,
+          "opacity": 0.5,
+          "color": "000000"
+        },
+        "blur": {
+          "hasBlur": true,
+          "value": 4
+        }
+      },
+      "animations": {
+        "appear": {
+          "category": "basic",
+          "type": "appear",
+          "delay": 150,
+          "id": "text1Animation1",
+          "eas": "bounce",
+          "direction": "up",
+          "timesheet": {
+            "start": 2000,
+            "duration": 1000
+          }
+        },
+        "dismiss": {
+          "category": "basic",
+          "type": "fadeout",
+          "delay": 150,
+          "id": "text1Animation1",
+          "timesheet": {
+            "start": 5000,
+            "duration": 1000
+          }
+        }
+      }
+    },
+    {
+      "itemId": "rectangle1",
+      "type": "shape",
+      "content": "rectangle",
+      "layout": {
+        "position": {
+          "axisYAlignmentType": "top",
+          "axisXAlignmentType": "left",
+          "xPosition": 146,
+          "yPosition": 48
+        },
+        "angle": 0,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      },
+      "style": {
+        "opacity": 1,
+        "fill": {
+          "isFill": true,
+          "color": "B3B3B3"
+        },
+        "stroke": {
+          "hasStroke": false,
+          "weight": 2,
+          "color": "000000"
+        },
+        "shadow": {
+          "hasShadow": false,
+          "offset": {
+            "x": 4,
+            "y": 4
+          },
+          "blur": 4,
+          "opacity": 0.5,
+          "color": "000000"
+        },
+        "blur": {
+          "hasBlur": false,
+          "value": 4
+        }
+      },
+      "animation": null
+    },
+    {
+      "itemId": "circle1",
+      "type": "shape",
+      "content": "circle",
+      "layout": {
+        "position": {
+          "axisYAlignmentType": "bottom",
+          "axisXAlignmentType": "left",
+          "xPosition": 48,
+          "yPosition": 48
+        },
+        "angle": 0,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      },
+      "style": {
+        "opacity": 1,
+        "fill": {
+          "isFill": true,
+          "color": "B3B3B3"
+        },
+        "stroke": {
+          "hasStroke": false,
+          "weight": 2,
+          "color": "000000"
+        },
+        "shadow": {
+          "hasShadow": false,
+          "offset": {
+            "x": 4,
+            "y": 4
+          },
+          "blur": 4,
+          "opacity": 0.5,
+          "color": "000000"
+        },
+        "blur": {
+          "hasBlur": false,
+          "value": 4
+        }
+      },
+      "animations": {
+        "appear": {
+          "category": "basic",
+          "type": "appear",
+          "delay": 0,
+          "id": "text1Animation1",
+          "eas": "bounce",
+          "direction": "up",
+          "timesheet": {
+            "start": 6000,
+            "duration": 2000
+          }
+        }
+      }
+    },
+    {
+      "itemId": "image1",
+      "type": "image",
+      "content": {
+        "src": "https://picsum.photos/id/237/200/300",
+        "aspectRatio": 1
+      },
+      "layout": {
+        "position": {
+          "axisYAlignmentType": "top",
+          "axisXAlignmentType": "right",
+          "xPosition": 10,
+          "yPosition": 10
+        },
+        "angle": 15,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      },
+      "style": {
+        "opacity": 1,
+        "fill": {
+          "isFill": true,
+          "color": "B3B3B3"
+        },
+        "stroke": {
+          "hasStroke": false,
+          "weight": 2,
+          "color": "000000"
+        },
+        "shadow": {
+          "hasShadow": false,
+          "offset": {
+            "x": 4,
+            "y": 4
+          },
+          "blur": 4,
+          "opacity": 0.5,
+          "color": "000000"
+        },
+        "blur": {
+          "hasBlur": false,
+          "value": 4
+        }
+      }
+    }
+  ]
+}
