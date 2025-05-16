@@ -1,7 +1,6 @@
 import 'package:animator/core/utils/color_ext.dart';
 import 'package:flutter/material.dart';
 import '../../../model/data/item_model.dart';
-import '../../../model/data/text_style_model.dart'; // Import TextStyleModel
 
 class TextWidget extends StatelessWidget {
   final ItemModel itemData;
