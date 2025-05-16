@@ -1,7 +1,22 @@
+import 'package:animator/features/page_player/view_model/bloc/page_player_bloc.dart';
+import 'package:animator/features/page_player/view_model/bloc/page_player_event.dart';
+import 'package:animator/features/page_player/view_model/bloc/page_player_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ScreenSelectionPage extends StatelessWidget {
+class ScreenSelectionPage extends StatefulWidget {
   const ScreenSelectionPage({super.key});
+
+  @override
+  State<ScreenSelectionPage> createState() => _ScreenSelectionPageState();
+}
+
+class _ScreenSelectionPageState extends State<ScreenSelectionPage> {
+  @override
+  void initState() {
+    context.read<PagePlayerBloc>().add(LoadPagePlayerEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +37,44 @@ class ScreenSelectionPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 40),
-
-            // Screen selection button
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 16,
-                ),
+            Expanded(
+              child: BlocBuilder<PagePlayerBloc, PagePlayerState>(
+                builder: (context, state) {
+                  return state is PagePlayerLoaded
+                      ? ListView.builder(
+                        itemCount: state.pages.length,
+                        itemBuilder: (context, index) {
+                          return ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 16,
+                              ),
+                            ),
+                            onPressed: () {
+                              // Navigate to the animated page player screen, passing the page model
+                              Navigator.pushNamed(
+                                context,
+                                '/innerPage',
+                                arguments: state.pages[index],
+                              );
+                            },
+                            child: Text(
+                              state.pages[index].screenId,
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          );
+                        },
+                      )
+                      : SizedBox(
+                        width: kToolbarHeight,
+                        height: kToolbarHeight,
+                        child: CircularProgressIndicator.adaptive(),
+                      );
+                },
               ),
-              onPressed: () {
-                // Navigate to the animated page player screen
-                Navigator.pushNamed(context, '/screen1');
-              },
-              child: const Text('Screen 1', style: TextStyle(fontSize: 18)),
             ),
+            // Screen selection button
 
             // Add more buttons for additional screens as needed
             const SizedBox(height: 20),

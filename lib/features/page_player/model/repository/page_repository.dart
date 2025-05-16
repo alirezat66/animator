@@ -6,7 +6,7 @@ class PageRepository {
 
   PageRepository({required this.localDataSource});
 
-  Future<PageModel> getPage() async {
+  Future<List<PageModel>> getPage() async {
     // In a real application, you might handle different data sources (remote, cache)
     // and implement more sophisticated error handling here.
     try {

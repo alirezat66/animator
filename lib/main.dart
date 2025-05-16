@@ -1,4 +1,5 @@
-import 'package:animator/features/page_player/view/pages/animated_page_player_screen.dart';
+import 'package:animator/features/page_player/model/data/page_model.dart';
+import 'package:animator/features/page_player/view/pages/page_player_screen.dart';
 import 'package:animator/features/page_player/view/pages/screen_select_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,9 +37,18 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         initialRoute: '/',
-        routes: {
-          '/': (context) => const ScreenSelectionPage(),
-          '/screen1': (context) => const AnimatedPagePlayerScreen(),
+        onGenerateRoute: (settings) {
+          if (settings.name == '/') {
+            return MaterialPageRoute(
+              builder: (_) => const ScreenSelectionPage(),
+            );
+          } else if (settings.name == '/innerPage') {
+            final args = settings.arguments as PageModel;
+            return MaterialPageRoute(
+              builder: (_) => PagePlayerScreen(page: args),
+            );
+          }
+          return null; // Unknown route
         },
       ),
     );

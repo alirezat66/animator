@@ -17,12 +17,12 @@ class PagePlayerLoading extends PagePlayerState {
 }
 
 class PagePlayerLoaded extends PagePlayerState {
-  final PageModel page;
+  final List<PageModel> pages;
 
-  const PagePlayerLoaded({required this.page});
+  const PagePlayerLoaded({required this.pages});
 
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [pages];
 }
 
 class PagePlayerError extends PagePlayerState {

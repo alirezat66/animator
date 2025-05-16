@@ -6,7 +6,8 @@ import 'page_player_state.dart';
 class PagePlayerBloc extends Bloc<PagePlayerEvent, PagePlayerState> {
   final PageRepository pageRepository;
 
-  PagePlayerBloc({required this.pageRepository}) : super(const PagePlayerInitial()) {
+  PagePlayerBloc({required this.pageRepository})
+    : super(const PagePlayerInitial()) {
     on<LoadPagePlayerEvent>(_onLoadPagePlayer);
   }
 
@@ -17,7 +18,7 @@ class PagePlayerBloc extends Bloc<PagePlayerEvent, PagePlayerState> {
     emit(const PagePlayerLoading());
     try {
       final page = await pageRepository.getPage();
-      emit(PagePlayerLoaded(page: page));
+      emit(PagePlayerLoaded(pages: page));
     } catch (e) {
       emit(PagePlayerError(message: e.toString()));
     }
